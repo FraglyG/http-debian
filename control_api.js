@@ -195,6 +195,6 @@ const server = http.createServer(async (req, res) => {
   sendJson(res, 404, { ok: false, error: 'not found' });
 });
 
-server.listen(PORT, API_HOST, () => {
-  console.log(`control API listening on ${API_HOST}:${PORT}`);
+server.listen(PORT, () => {
+  console.log(`control API listening on port ${PORT}`);
 });
