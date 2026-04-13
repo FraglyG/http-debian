@@ -10,8 +10,7 @@ function envNumber(name, fallback) {
   return Number.isFinite(val) && val > 0 ? val : fallback;
 }
 
-const API_HOST = process.env.API_HOST || '0.0.0.0';
-const API_PORT = envNumber('API_PORT', 8080);
+const PORT = envNumber('PORT', 3000);
 const API_TOKEN = process.env.API_TOKEN || '';
 const DEFAULT_TIMEOUT = envNumber('DEFAULT_TIMEOUT', 30);
 const API_MAX_BODY_BYTES = envNumber('API_MAX_BODY_BYTES', 2 * 1024 * 1024);
@@ -196,6 +195,6 @@ const server = http.createServer(async (req, res) => {
   sendJson(res, 404, { ok: false, error: 'not found' });
 });
 
-server.listen(API_PORT, () => {
-  console.log(`control API listening on ${API_HOST}:${API_PORT}`);
+server.listen(PORT, API_HOST, () => {
+  console.log(`control API listening on ${API_HOST}:${PORT}`);
 });
